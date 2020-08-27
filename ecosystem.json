@@ -1,0 +1,16 @@
+{
+	"apps": [
+		{
+			"name": "forsen-bingo-server",
+			"script": "npm",
+			"args": "start",
+			"error_file": "/var/forsen-bingo/logs/error.log",
+			"out_file": "/var/forsen-bingo/logs/out.log",
+			"env": { "NODE_ENV": "development" },
+			"env_production": {
+				"NODE_ENV": "production",
+				"PORT": 80
+			}
+		}
+	]
+}
