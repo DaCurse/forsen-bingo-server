@@ -6,8 +6,20 @@ import { BingoSquareRepository } from './bingo-square.repository';
 export class BingoService {
 	constructor(private readonly bingoSquareRepository: BingoSquareRepository) {}
 
-	getSquares(): Promise<BingoSquare[]> {
-		return this.bingoSquareRepository.find();
+	async getSquares(): Promise<BingoSquare[]> {
+		const squares = await this.bingoSquareRepository.find();
+		let currentIndex = squares.length,
+			randomIndex;
+
+		while (currentIndex !== 0) {
+			randomIndex = Math.floor(Math.random() * currentIndex--);
+			[squares[currentIndex], squares[randomIndex]] = [
+				squares[randomIndex],
+				squares[currentIndex],
+			];
+		}
+
+		return squares;
 	}
 
 	private async getSquareById(squareId: number): Promise<BingoSquare> {
