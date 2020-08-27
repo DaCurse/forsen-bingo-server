@@ -9,8 +9,10 @@
 			"env": { "NODE_ENV": "development" },
 			"env_production": {
 				"NODE_ENV": "production",
-				"PORT": 80,
-				"DB_PATH": "/var/forsen-bingo/data.sqlite"
+				"PORT": 443,
+				"DB_PATH": "/var/forsen-bingo/data.sqlite",
+				"SSL_CERT": "/etc/letsencrypt/live/forsenbingo.tk/fullchain.pem",
+				"SSL_KEY": "/etc/letsencrypt/live/forsenbingo.tk/privkey.pem"
 			}
 		}
 	]
