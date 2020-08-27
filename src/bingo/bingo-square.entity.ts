@@ -6,6 +6,8 @@ export class BingoSquare extends BaseEntity {
 	id: number;
 	@Column()
 	line: string;
+	@Column({ default: false })
+	freeSquare: boolean;
 	@Column({ default: 0 })
 	clickCount: number;
 }
