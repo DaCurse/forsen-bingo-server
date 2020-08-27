@@ -9,7 +9,8 @@
 			"env": { "NODE_ENV": "development" },
 			"env_production": {
 				"NODE_ENV": "production",
-				"PORT": 80
+				"PORT": 80,
+				"DB_PATH": "/var/forsen-bingo/data.sqlite"
 			}
 		}
 	]
