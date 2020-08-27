@@ -34,12 +34,16 @@ export class BingoService {
 
 	async activateSquare(squareId: number): Promise<void> {
 		const square = await this.getSquareById(squareId);
+		if (square.freeSquare) return;
+
 		square.clickCount++;
 		await square.save();
 	}
 
 	async deactivateSquare(squareId: number): Promise<void> {
 		const square = await this.getSquareById(squareId);
+		if (square.freeSquare) return;
+
 		if (square.clickCount > 0) {
 			square.clickCount--;
 			await square.save();
