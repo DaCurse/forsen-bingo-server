@@ -1,12 +1,20 @@
-FROM node:lts-alpine3.12
+FROM node:lts as base
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
 COPY package*.json ./
-RUN npm install
+RUN npm install --only=prod
 
-COPY . .
+FROM base as development
+
+COPY nest-cli.json \
+	tsconfig.* \
+	./
+COPY ./src/ ./src/
+RUN npm install
 RUN npm run build
+
+FROM node:lts-alpine3.12
 
 ARG NODE_ENV=production
 ARG PORT=443
@@ -17,4 +25,10 @@ ENV SSL_CERT=/ssl/live/forsenbingo.tk/fullchain.pem
 ENV SSL_KEY=/ssl/live/forsenbingo.tk/privkey.pem
 ENV DB_PATH=/db/data.sqlite
 
-CMD ["npm", "start"]
+COPY --from=base /app/package.json ./
+COPY --from=development /app/dist/ ./dist/
+COPY --from=base /app/node_modules/ ./node_modules
+
+EXPOSE 443
+
+CMD ["npm", "run", "start:prod"]
