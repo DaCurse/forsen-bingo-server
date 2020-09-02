@@ -1,0 +1,11 @@
+.git
+dist
+node_modules
+npm-debug.log
+.vscode
+README.md
+LICENSE
+.gitignore
+.prettierrc
+.eslintrc.js
+data.sqlite
