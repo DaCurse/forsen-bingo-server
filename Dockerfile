@@ -4,6 +4,7 @@ WORKDIR /app
 
 COPY package*.json ./
 RUN npm install --only=prod
+RUN npm dedupe
 
 FROM base as development
 
@@ -29,6 +30,6 @@ COPY --from=base /app/package.json ./
 COPY --from=development /app/dist/ ./dist/
 COPY --from=base /app/node_modules/ ./node_modules
 
-EXPOSE 443
+EXPOSE ${PORT}
 
 CMD ["npm", "run", "start:prod"]
