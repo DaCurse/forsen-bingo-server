@@ -7,4 +7,4 @@ export const httpsOptions: HttpsOptions =
 				key: readFileSync(process.env.SSL_KEY),
 				cert: readFileSync(process.env.SSL_CERT),
 		  }
-		: {};
+		: undefined;
