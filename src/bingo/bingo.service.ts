@@ -2,22 +2,18 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { BingoSquare } from './bingo-square.entity';
 import { BingoSquareRepository } from './bingo-square.repository';
 
+const SQUARE_LIMIT = 80;
+
 @Injectable()
 export class BingoService {
 	constructor(private readonly bingoSquareRepository: BingoSquareRepository) {}
 
 	async getSquares(): Promise<BingoSquare[]> {
-		const squares = await this.bingoSquareRepository.find();
-		let currentIndex = squares.length,
-			randomIndex;
-
-		while (currentIndex !== 0) {
-			randomIndex = Math.floor(Math.random() * currentIndex--);
-			[squares[currentIndex], squares[randomIndex]] = [
-				squares[randomIndex],
-				squares[currentIndex],
-			];
-		}
+		const squares = await this.bingoSquareRepository
+			.createQueryBuilder('square')
+			.limit(SQUARE_LIMIT)
+			.orderBy('RANDOM()')
+			.getMany();
 
 		return squares;
 	}
