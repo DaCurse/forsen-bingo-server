@@ -2,24 +2,26 @@
 	"name": "forsen-bingo-server",
 	"version": "1.0.2",
 	"description": "Backend for https://github.com/DaCurse/forsen-bingo",
-	"author": "DaCurse",
 	"license": "GPL-3.0",
+	"author": "DaCurse",
 	"scripts": {
 		"prebuild": "rimraf dist",
 		"build": "nest build",
-		"format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+		"format": "prettier --write \"src/**/*.ts\"",
+		"lint": "eslint \"src/**/*.ts\" --fix",
 		"start": "nest start",
-		"start:dev": "nest start --watch",
 		"start:debug": "nest start --debug --watch",
-		"start:prod": "node dist/main",
-		"lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix"
+		"start:dev": "nest start --watch",
+		"start:prod": "node dist/main"
 	},
 	"dependencies": {
 		"@nestjs/common": "^7.4.4",
 		"@nestjs/core": "^7.4.4",
 		"@nestjs/platform-express": "^7.4.4",
 		"@nestjs/typeorm": "^7.1.3",
+		"chalk": "^4.1.0",
 		"express-rate-limit": "^5.1.3",
+		"morgan": "^1.10.0",
 		"reflect-metadata": "^0.1.13",
 		"rimraf": "^3.0.2",
 		"rxjs": "^6.6.3",
@@ -29,37 +31,19 @@
 	"devDependencies": {
 		"@nestjs/cli": "^7.5.1",
 		"@nestjs/schematics": "^7.1.2",
-		"@nestjs/testing": "^7.4.4",
 		"@types/express": "^4.17.8",
-		"@types/jest": "26.0.13",
+		"@types/morgan": "^1.9.1",
 		"@types/node": "^14.10.1",
-		"@types/supertest": "^2.0.10",
 		"@typescript-eslint/eslint-plugin": "4.1.0",
 		"@typescript-eslint/parser": "4.1.0",
 		"eslint": "7.8.1",
 		"eslint-config-prettier": "^6.11.0",
 		"eslint-plugin-import": "^2.22.0",
-		"jest": "26.4.2",
 		"prettier": "^2.1.1",
 		"supertest": "^4.0.2",
-		"ts-jest": "26.3.0",
 		"ts-loader": "^8.0.3",
 		"ts-node": "^9.0.0",
 		"tsconfig-paths": "^3.9.0",
 		"typescript": "^4.0.2"
-	},
-	"jest": {
-		"moduleFileExtensions": [
-			"js",
-			"json",
-			"ts"
-		],
-		"rootDir": "src",
-		"testRegex": ".spec.ts$",
-		"transform": {
-			"^.+\\.(t|j)s$": "ts-jest"
-		},
-		"coverageDirectory": "../coverage",
-		"testEnvironment": "node"
 	}
 }
