@@ -2,9 +2,11 @@ FROM node:lts as base
 
 WORKDIR /app
 
-COPY package*.json ./
-RUN npm install --only=prod
-RUN npm dedupe
+COPY package.json \
+  yarn.lock \
+  .yarnclean \
+  ./
+RUN yarn --prod
 
 FROM base as development
 
@@ -12,8 +14,8 @@ COPY nest-cli.json \
 	tsconfig.* \
 	./
 COPY ./src/ ./src/
-RUN npm install
-RUN npm run build
+RUN yarn
+RUN yarn build
 
 FROM node:lts-alpine3.12
 
@@ -32,4 +34,4 @@ COPY --from=base /app/node_modules/ ./node_modules
 
 EXPOSE ${PORT}
 
-CMD ["npm", "run", "start:prod"]
+CMD ["yarn", "start:prod"]

@@ -4,8 +4,8 @@ import { BingoModule } from './bingo/bingo.module';
 import { typeOrmConfig } from './config/typeorm.config';
 
 @Module({
-	imports: [TypeOrmModule.forRoot(typeOrmConfig), BingoModule],
-	controllers: [],
-	providers: [],
+  imports: [TypeOrmModule.forRoot(typeOrmConfig), BingoModule],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}

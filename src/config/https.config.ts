@@ -2,9 +2,9 @@ import { HttpsOptions } from '@nestjs/common/interfaces/external/https-options.i
 import { readFileSync } from 'fs';
 
 export const httpsOptions: HttpsOptions =
-	process.env.NODE_ENV === 'production'
-		? {
-				key: readFileSync(process.env.SSL_KEY),
-				cert: readFileSync(process.env.SSL_CERT),
-		  }
-		: undefined;
+  process.env.NODE_ENV === 'production'
+    ? {
+        key: readFileSync(process.env.SSL_KEY),
+        cert: readFileSync(process.env.SSL_CERT),
+      }
+    : undefined;

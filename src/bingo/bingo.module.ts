@@ -5,8 +5,8 @@ import { BingoController } from './bingo.controller';
 import { BingoService } from './bingo.service';
 
 @Module({
-	imports: [TypeOrmModule.forFeature([BingoSquareRepository])],
-	controllers: [BingoController],
-	providers: [BingoService],
+  imports: [TypeOrmModule.forFeature([BingoSquareRepository])],
+  controllers: [BingoController],
+  providers: [BingoService],
 })
 export class BingoModule {}
