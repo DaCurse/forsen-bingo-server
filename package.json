@@ -1,56 +1,56 @@
 {
-	"name": "forsen-bingo-server",
-	"version": "1.0.2",
-	"description": "Backend for https://github.com/DaCurse/forsen-bingo",
-	"license": "GPL-3.0",
-	"author": "DaCurse",
-	"scripts": {
-		"prebuild": "rimraf dist",
-		"build": "nest build",
-		"format": "prettier --write \"src/**/*.ts\"",
-		"lint": "eslint \"src/**/*.ts\" --fix",
-		"start": "nest start",
-		"start:debug": "nest start --debug --watch",
-		"start:dev": "nest start --watch",
-		"start:prod": "node dist/main"
-	},
-	"dependencies": {
-		"@nestjs/common": "^7.5.4",
-		"@nestjs/core": "^7.5.4",
-		"@nestjs/platform-express": "^7.5.4",
-		"@nestjs/typeorm": "^7.1.5",
-		"chalk": "^4.1.0",
-		"express-rate-limit": "^5.2.3",
-		"helmet": "^4.2.0",
-		"morgan": "^1.10.0",
-		"reflect-metadata": "^0.1.13",
-		"rimraf": "^3.0.2",
-		"rxjs": "^6.6.3",
-		"sqlite3": "^5.0.0",
-		"typeorm": "^0.2.29"
-	},
-	"devDependencies": {
-		"@nestjs/cli": "^7.5.3",
-		"@nestjs/schematics": "^7.2.2",
-		"@types/express": "^4.17.9",
-		"@types/morgan": "^1.9.2",
-		"@types/node": "^14.14.9",
-		"@typescript-eslint/eslint-plugin": "4.8.1",
-		"@typescript-eslint/parser": "4.8.1",
-		"eslint": "7.14.0",
-		"eslint-config-prettier": "^6.15.0",
-		"eslint-plugin-import": "^2.22.1",
-		"husky": "^4.3.0",
-		"prettier": "^2.2.0",
-		"supertest": "^6.0.1",
-		"ts-loader": "^8.0.11",
-		"ts-node": "^9.0.0",
-		"tsconfig-paths": "^3.9.0",
-		"typescript": "^4.1.2"
-	},
-	"husky": {
-		"hooks": {
-			"pre-commit": "npm run format && npm run lint"
-		}
-	}
+  "name": "forsen-bingo-server",
+  "version": "1.0.3",
+  "description": "Backend for https://github.com/DaCurse/forsen-bingo",
+  "license": "GPL-3.0",
+  "author": "DaCurse",
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "nest build",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "eslint \"src/**/*.ts\" --fix",
+    "start": "nest start",
+    "start:debug": "nest start --debug --watch",
+    "start:dev": "nest start --watch",
+    "start:prod": "node dist/main"
+  },
+  "dependencies": {
+    "@nestjs/common": "^7.5.4",
+    "@nestjs/core": "^7.5.4",
+    "@nestjs/platform-express": "^7.5.4",
+    "@nestjs/typeorm": "^7.1.5",
+    "chalk": "^4.1.0",
+    "express-rate-limit": "^5.2.3",
+    "helmet": "^4.2.0",
+    "morgan": "^1.10.0",
+    "reflect-metadata": "^0.1.13",
+    "rimraf": "^3.0.2",
+    "rxjs": "^6.6.3",
+    "sqlite3": "^5.0.0",
+    "typeorm": "^0.2.29"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^7.5.3",
+    "@nestjs/schematics": "^7.2.2",
+    "@types/express": "^4.17.9",
+    "@types/morgan": "^1.9.2",
+    "@types/node": "^14.14.9",
+    "@typescript-eslint/eslint-plugin": "4.8.1",
+    "@typescript-eslint/parser": "4.8.1",
+    "eslint": "7.14.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-import": "^2.22.1",
+    "husky": "^4.3.0",
+    "prettier": "^2.2.0",
+    "supertest": "^6.0.1",
+    "ts-loader": "^8.0.11",
+    "ts-node": "^9.0.0",
+    "tsconfig-paths": "^3.9.0",
+    "typescript": "^4.1.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run format && npm run lint"
+    }
+  }
 }
