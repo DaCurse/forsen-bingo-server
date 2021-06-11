@@ -1,6 +1,6 @@
 {
   "name": "forsen-bingo-server",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Backend for https://github.com/DaCurse/forsen-bingo",
   "license": "GPL-3.0",
   "author": "DaCurse",
