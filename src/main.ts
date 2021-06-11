@@ -1,4 +1,5 @@
 import { NestFactory } from '@nestjs/core';
+import * as rateLimit from 'express-rate-limit';
 import * as helmet from 'helmet';
 import { AppModule } from './app.module';
 import { httpsOptions } from './config/https.config';
@@ -12,8 +13,7 @@ async function bootstrap() {
   app.setGlobalPrefix('/api');
   app.use(helmet());
   app.enableCors();
-  app.use(rateLimitConfig.short);
-  app.use(rateLimitConfig.long);
+  app.use(rateLimit(rateLimitConfig));
   app.use(morganMiddleware);
 
   await app.listen(process.env.PORT || 3000);
