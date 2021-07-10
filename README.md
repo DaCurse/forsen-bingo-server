@@ -21,5 +21,5 @@ docker run -d \
   --restart unless-stopped \
   --name forsen-bingo -p 80 \
   --mount type=bind,source=/var/lib/forsen-bingo/data,target=/data \
-  forsen-bingo:latest
+  forsen-bingo:latest-http
 ```
