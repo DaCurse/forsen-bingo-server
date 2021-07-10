@@ -20,13 +20,11 @@ RUN yarn build
 FROM node:lts-alpine3.12
 
 ARG NODE_ENV=production
-ARG PORT=443
+ARG PORT=80
 
 ENV NODE_ENV=${NODE_ENV}
 ENV PORT=${PORT}
-ENV SSL_CERT=/ssl/live/forsenbingo.tk/fullchain.pem
-ENV SSL_KEY=/ssl/live/forsenbingo.tk/privkey.pem
-ENV DB_PATH=/db/data.sqlite
+ENV DB_PATH=/data/db.sqlite
 
 COPY --from=base /app/package.json ./
 COPY --from=development /app/dist/ ./dist/
