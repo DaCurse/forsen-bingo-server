@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { BingoSquare } from './bingo-square.entity';
 import { BingoSquareRepository } from './bingo-square.repository';
 
@@ -18,31 +18,21 @@ export class BingoService {
     return squares;
   }
 
-  private async getSquareById(squareId: number): Promise<BingoSquare> {
-    const found = await this.bingoSquareRepository.findOne(squareId);
-
-    if (!found) {
-      throw new NotFoundException(`Square with ID ${squareId} not found.`);
-    }
-
-    return found;
-  }
-
   async activateSquare(squareId: number): Promise<void> {
-    const square = await this.getSquareById(squareId);
-    if (square.freeSquare) return;
-
-    square.clickCount++;
-    await square.save();
+    await this.bingoSquareRepository
+      .createQueryBuilder()
+      .update(BingoSquare)
+      .set({ clickCount: () => 'clickCount + 1' })
+      .where('id = :id', { id: squareId })
+      .execute();
   }
 
   async deactivateSquare(squareId: number): Promise<void> {
-    const square = await this.getSquareById(squareId);
-    if (square.freeSquare) return;
-
-    if (square.clickCount > 0) {
-      square.clickCount--;
-      await square.save();
-    }
+    await this.bingoSquareRepository
+      .createQueryBuilder()
+      .update(BingoSquare)
+      .set({ clickCount: () => 'clickCount - 1' })
+      .where(['id = :id', 'clickCount > :zero'], { id: squareId, zero: 0 })
+      .execute();
   }
 }
